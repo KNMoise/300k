@@ -1,123 +1,324 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, MapPin, Users, Award, Target, Heart, Leaf } from "lucide-react"
+import {
+  ArrowLeft,
+  Award,
+  Target,
+  Heart,
+  Leaf,
+  Shield,
+  Factory,
+  ChevronLeft,
+  ChevronRight,
+  CheckCircle,
+  TrendingUp,
+  Zap,
+  Eye,
+  Droplets,
+  Star,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { QuoteModal } from "@/components/quote-modal"
+
+interface TeamMember {
+  id: string
+  name: string
+  position: string
+  department: string
+  image: string
+  bio: string
+  expertise: string[]
+  experience: string
+  achievements: string[]
+  quote: string
+  color: string
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    id: "1",
+    name: "Dr. Marie Uwimana",
+    position: "Chief Executive Officer",
+    department: "Executive Leadership",
+    image: "/placeholder.svg?height=400&width=400",
+    bio: "Visionary leader driving Rwanda's manufacturing excellence with 15+ years of transformative experience.",
+    expertise: ["Strategic Leadership", "Business Growth", "International Markets", "Innovation"],
+    experience: "15+ Years",
+    achievements: [
+      "Led 300% company growth",
+      "Expanded to 5 countries",
+      "ISO certification champion",
+      "Women in manufacturing advocate",
+    ],
+    quote: "Excellence is our daily commitment to innovation and quality.",
+    color: "gold",
+  },
+  {
+    id: "2",
+    name: "James Mukamana",
+    position: "Chief Technology Officer",
+    department: "R&D Innovation",
+    image: "/placeholder.svg?height=400&width=400",
+    bio: "Chemical engineering expert revolutionizing product formulation with sustainable innovation.",
+    expertise: ["Product Innovation", "Quality Systems", "Chemical Engineering", "Sustainability"],
+    experience: "12+ Years",
+    achievements: [
+      "15+ award-winning formulations",
+      "40% environmental impact reduction",
+      "ISO 9001:2015 implementation",
+      "8 published research papers",
+    ],
+    quote: "Innovation creates products that enhance lives sustainably.",
+    color: "blue",
+  },
+  {
+    id: "3",
+    name: "Sarah Uwizeyimana",
+    position: "Quality Assurance Director",
+    department: "Quality Excellence",
+    image: "/placeholder.svg?height=400&width=400",
+    bio: "Quality expert ensuring world-class standards through precision and continuous improvement.",
+    expertise: ["Quality Management", "Testing Protocols", "Compliance", "Process Excellence"],
+    experience: "10+ Years",
+    achievements: [
+      "99.8% quality compliance",
+      "Zero product recalls",
+      "Advanced testing protocols",
+      "50+ professionals trained",
+    ],
+    quote: "Quality excellence through intelligent effort and precision.",
+    color: "green",
+  },
+  {
+    id: "4",
+    name: "David Nkurunziza",
+    position: "Operations Director",
+    department: "Manufacturing",
+    image: "/placeholder.svg?height=400&width=400",
+    bio: "Manufacturing optimization expert delivering efficiency while maintaining safety excellence.",
+    expertise: ["Production Excellence", "Lean Manufacturing", "Safety Systems", "Optimization"],
+    experience: "14+ Years",
+    achievements: [
+      "35% efficiency increase",
+      "Zero-accident safety record",
+      "50% waste reduction",
+      "Facility expansion leadership",
+    ],
+    quote: "Excellence through safety, quality, and efficiency harmony.",
+    color: "purple",
+  },
+  {
+    id: "5",
+    name: "Grace Mukasine",
+    position: "Commercial Director",
+    department: "Sales & Marketing",
+    image: "/placeholder.svg?height=400&width=400",
+    bio: "Brand strategist expanding market presence across East Africa with data-driven excellence.",
+    expertise: ["Brand Strategy", "Market Expansion", "Digital Innovation", "Customer Excellence"],
+    experience: "8+ Years",
+    achievements: [
+      "60% market share growth",
+      "200+ retail partnerships",
+      "Award-winning campaigns",
+      "Digital transformation leader",
+    ],
+    quote: "Great brands built on trust, quality, and genuine connections.",
+    color: "pink",
+  },
+]
 
 export default function AboutPage() {
-  return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <section className="bg-blue-900 text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center gap-4 mb-6">
-            <Button asChild variant="ghost" size="sm" className="text-white hover:bg-blue-800">
-              <Link href="/">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Home
-              </Link>
-            </Button>
-          </div>
-          <h1 className="text-4xl lg:text-5xl font-bold mb-4">About Peto Group Ltd</h1>
-          <p className="text-xl text-blue-100 max-w-3xl">
-            Leading the way in personal care and cleaning products manufacturing in Rwanda, with a commitment to
-            quality, sustainability, and community development.
-          </p>
-        </div>
-      </section>
+  const [currentTeamMember, setCurrentTeamMember] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
 
-      {/* Company Overview */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-4xl font-bold text-gray-900">Our Story</h2>
-              <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  Founded with a vision to provide high-quality personal care and cleaning products to the Rwandan
-                  market, Peto Group Ltd has grown from a small startup to a leading manufacturer serving customers
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTeamMember((prev) => (prev + 1) % teamMembers.length)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const nextTeamMember = () => {
+    setCurrentTeamMember((prev) => (prev + 1) % teamMembers.length)
+  }
+
+  const prevTeamMember = () => {
+    setCurrentTeamMember((prev) => (prev - 1 + teamMembers.length) % teamMembers.length)
+  }
+
+  const currentMember = teamMembers[currentTeamMember]
+
+  return (
+    <div className="min-h-screen luxury-gradient overflow-x-hidden">
+      {/* Navigation */}
+      <div className="fixed top-6 left-6 z-50">
+        <Button
+          asChild
+          variant="ghost"
+          size="sm"
+          className="glass-effect text-white hover:bg-white/20 border border-white/30"
+        >
+          <Link href="/">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Home
+          </Link>
+        </Button>
+      </div>
+
+      {/* Company Story Section */}
+      <section className="relative py-20 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div
+            className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-gold-500/20 to-transparent rounded-full blur-3xl"
+            style={{ transform: `translate(${scrollY * 0.1}px, ${scrollY * 0.15}px)` }}
+          ></div>
+          <div
+            className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-l from-forest-600/20 to-transparent rounded-full blur-2xl"
+            style={{ transform: `translate(${-scrollY * 0.1}px, ${scrollY * 0.1}px)` }}
+          ></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
+            {/* Content */}
+            <div className="space-y-8 fade-in-left">
+              <div className="space-y-6">
+                <div className="glass-effect inline-flex items-center gap-3 px-6 py-3 rounded-full border border-gold-400/30">
+                  <Factory className="h-5 w-5 text-gold-400" />
+                  <span className="text-gold-400 font-semibold text-sm tracking-wider uppercase">Since 2019</span>
+                </div>
+
+                <h1 className="hero-text text-white leading-tight">
+                  About
+                  <span className="block bg-gradient-to-r from-gold-400 via-gold-300 to-gold-500 bg-clip-text text-transparent">
+                    Peto Group
+                  </span>
+                </h1>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-1 gold-gradient"></div>
+                  <div className="w-8 h-1 bg-gold-400/50"></div>
+                </div>
+
+                <p className="text-xl text-gray-300 leading-relaxed">
+                  Leading Rwanda's manufacturing revolution with
+                  <span className="text-gold-400 font-semibold"> world-class standards</span>, empowering
+                  <span className="text-forest-400 font-semibold"> 70+ professionals</span> and delivering excellence
                   across East Africa.
                 </p>
-                <p>
-                  Located in Kamonyi Ruyenze, Kigali, our state-of-the-art manufacturing facility employs 40 direct
-                  workers and creates employment opportunities for over 70 individuals in our extended supply chain and
-                  distribution network.
-                </p>
-                <p>
-                  We take pride in being a 100% Rwandan company, contributing to the country's economic development
-                  while maintaining international quality standards in all our products.
-                </p>
+              </div>
+
+              {/* Quick Stats */}
+              <div className="grid grid-cols-2 gap-6 fade-in-up delay-200">
+                <div className="glass-effect p-6 border border-gold-400/20">
+                  <div className="text-3xl font-black text-gold-400 mb-2">70+</div>
+                  <div className="text-sm text-gray-300 font-medium">Expert Team</div>
+                </div>
+                <div className="glass-effect p-6 border border-forest-400/20">
+                  <div className="text-3xl font-black text-forest-400 mb-2">15+</div>
+                  <div className="text-sm text-gray-300 font-medium">Premium Products</div>
+                </div>
               </div>
             </div>
-            <div className="relative">
-              <Image
-                src="/placeholder.svg?height=500&width=600"
-                alt="Peto Group Manufacturing Facility"
-                width={600}
-                height={500}
-                className="rounded-lg shadow-xl"
-              />
-              <div className="absolute -bottom-6 -right-6 bg-yellow-500 text-black p-6 rounded-lg shadow-xl">
-                <div className="text-2xl font-bold">Made in</div>
-                <div className="text-xl font-semibold">Rwanda</div>
+
+            {/* Image */}
+            <div className="relative fade-in-right delay-300">
+              <div
+                className="relative overflow-hidden shadow-2xl"
+                style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+              >
+                <Image
+                  src="/sample.jpg"
+                  alt="Peto Group Excellence"
+                  width={600}
+                  height={700}
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-900/50 via-transparent to-transparent"></div>
+              </div>
+
+              {/* Floating Elements */}
+              <div
+                className="absolute -top-6 -right-6 gold-gradient text-navy-900 p-6 shadow-xl"
+                style={{ transform: `translateY(${scrollY * 0.05}px)` }}
+              >
+                <div className="text-2xl font-black">Made in</div>
+                <div className="text-lg font-bold">Rwanda</div>
+              </div>
+
+              <div
+                className="absolute -bottom-6 -left-6 bg-gradient-to-br from-forest-600 to-forest-700 text-white p-6 shadow-xl"
+                style={{ transform: `translateY(${-scrollY * 0.05}px)` }}
+              >
+                <div className="text-3xl font-black">ISO</div>
+                <div className="text-sm font-bold">Certified</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mission, Vision, Values */}
-      <section className="py-20 bg-gray-50">
+      {/* Mission, Vision, Values - Compact */}
+      <section className="relative py-16 glass-effect">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Foundation</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Built on strong values and guided by a clear vision for the future of manufacturing in Rwanda.
-            </p>
+          <div className="text-center mb-12 fade-in-up">
+            <h2 className="section-title text-white mb-4">
+              Our <span className="text-gold-400">Foundation</span>
+            </h2>
+            <div className="w-16 h-1 gold-gradient mx-auto"></div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center border-0 shadow-lg">
-              <CardHeader>
-                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Target className="h-8 w-8 text-blue-600" />
+          <div className="modern-grid">
+            <Card className="modern-card glass-effect border border-blue-400/20 text-white fade-in-up delay-100">
+              <CardHeader className="text-center pb-4">
+                <div className="bg-blue-500/20 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <Target className="h-8 w-8 text-blue-400" />
                 </div>
-                <CardTitle className="text-2xl text-blue-900">Our Mission</CardTitle>
+                <CardTitle className="text-xl text-blue-300">Mission</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-600 text-base leading-relaxed">
-                  To manufacture and distribute high-quality personal care and cleaning products that improve the lives
-                  of our customers while creating sustainable employment and contributing to Rwanda's economic growth.
+              <CardContent className="text-center">
+                <CardDescription className="text-gray-300 text-sm">
+                  Manufacturing world-class products that enhance lives while driving Rwanda's economic transformation.
                 </CardDescription>
               </CardContent>
             </Card>
 
-            <Card className="text-center border-0 shadow-lg">
-              <CardHeader>
-                <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Award className="h-8 w-8 text-yellow-600" />
+            <Card className="modern-card glass-effect border border-gold-400/20 text-white fade-in-up delay-200">
+              <CardHeader className="text-center pb-4">
+                <div className="bg-gold-500/20 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <Eye className="h-8 w-8 text-gold-400" />
                 </div>
-                <CardTitle className="text-2xl text-blue-900">Our Vision</CardTitle>
+                <CardTitle className="text-xl text-gold-300">Vision</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-600 text-base leading-relaxed">
-                  To become the leading manufacturer of personal care and cleaning products in East Africa, recognized
-                  for our quality, innovation, and positive impact on communities and the environment.
+              <CardContent className="text-center">
+                <CardDescription className="text-gray-300 text-sm">
+                  East Africa's premier manufacturer, recognized globally for quality, innovation, and community impact.
                 </CardDescription>
               </CardContent>
             </Card>
 
-            <Card className="text-center border-0 shadow-lg">
-              <CardHeader>
-                <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Heart className="h-8 w-8 text-green-600" />
+            <Card className="modern-card glass-effect border border-forest-400/20 text-white fade-in-up delay-300">
+              <CardHeader className="text-center pb-4">
+                <div className="bg-forest-500/20 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <Heart className="h-8 w-8 text-forest-400" />
                 </div>
-                <CardTitle className="text-2xl text-blue-900">Our Values</CardTitle>
+                <CardTitle className="text-xl text-forest-300">Values</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-600 text-base leading-relaxed">
-                  Quality excellence, environmental responsibility, community development, employee welfare, customer
-                  satisfaction, and ethical business practices guide everything we do.
+              <CardContent className="text-center">
+                <CardDescription className="text-gray-300 text-sm">
+                  Excellence, sustainability, community empowerment, and ethical practices in everything we do.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -125,159 +326,280 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Manufacturing Excellence */}
-      <section className="py-20">
+      {/* Team Section - Redesigned */}
+      <section className="relative py-20 bg-gradient-to-br from-navy-900/50 via-slate-900/50 to-navy-800/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 fade-in-up">
+            <h2 className="section-title text-white mb-4">
+              Leadership <span className="text-gold-400">Excellence</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">Meet the visionary leaders driving our success</p>
+            <div className="w-16 h-1 gold-gradient mx-auto mt-6"></div>
+          </div>
+
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-3 gap-8 items-start">
+              {/* Team Member Cards Grid */}
+              <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
+                {teamMembers.map((member, index) => (
+                  <Card
+                    key={member.id}
+                    className={`modern-card group cursor-pointer transition-all duration-500 transform hover:scale-105 ${
+                      index === currentTeamMember
+                        ? "glass-effect border-gold-400/40 shadow-2xl scale-105"
+                        : "glass-effect border-slate-700/30 hover:border-slate-600/50"
+                    } fade-in-up`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                    onClick={() => setCurrentTeamMember(index)}
+                  >
+                    <CardHeader className="pb-4">
+                      <div className="relative overflow-hidden mb-4">
+                        <Image
+                          src={member.image || "/placeholder.svg"}
+                          alt={member.name}
+                          width={300}
+                          height={300}
+                          className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div className="absolute bottom-3 left-3">
+                          <Badge className="bg-gold-500/80 text-white text-xs">{member.experience}</Badge>
+                        </div>
+                      </div>
+                      <CardTitle className="text-lg text-white group-hover:text-gold-400 transition-colors">
+                        {member.name}
+                      </CardTitle>
+                      <CardDescription className="text-gray-400 text-sm">{member.position}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Active Member Details */}
+              <div className="lg:col-span-1">
+                <Card className="modern-card glass-effect border border-gold-400/20 sticky top-8">
+                  <CardHeader>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="relative">
+                        <Image
+                          src={currentMember.image || "/placeholder.svg"}
+                          alt={currentMember.name}
+                          width={80}
+                          height={80}
+                          className="w-20 h-20 object-cover border-2 border-gold-400"
+                        />
+                        <div className="absolute -bottom-1 -right-1 gold-gradient text-navy-900 p-1">
+                          <Star className="h-4 w-4" />
+                        </div>
+                      </div>
+                      <div>
+                        <CardTitle className="text-xl text-white">{currentMember.name}</CardTitle>
+                        <CardDescription className="text-gold-400 font-semibold">
+                          {currentMember.position}
+                        </CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+
+                  <CardContent className="space-y-6">
+                    {/* Quote */}
+                    <div className="glass-effect p-4 border-l-4 border-gold-400">
+                      <p className="text-gray-300 italic text-sm">"{currentMember.quote}"</p>
+                    </div>
+
+                    {/* Bio */}
+                    <p className="text-gray-300 text-sm leading-relaxed">{currentMember.bio}</p>
+
+                    {/* Expertise */}
+                    <div>
+                      <h4 className="text-gold-400 font-semibold mb-3 flex items-center text-sm">
+                        <Zap className="h-4 w-4 mr-2" />
+                        Expertise
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {currentMember.expertise.map((skill, index) => (
+                          <Badge key={index} className="glass-effect text-gray-300 border-gray-500/30 text-xs">
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Achievements */}
+                    <div>
+                      <h4 className="text-gold-400 font-semibold mb-3 flex items-center text-sm">
+                        <TrendingUp className="h-4 w-4 mr-2" />
+                        Key Achievements
+                      </h4>
+                      <ul className="space-y-2">
+                        {currentMember.achievements.slice(0, 3).map((achievement, index) => (
+                          <li key={index} className="flex items-start text-gray-300 text-sm">
+                            <CheckCircle className="h-4 w-4 text-gold-400 mr-2 mt-0.5 flex-shrink-0" />
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Navigation */}
+                    <div className="flex justify-between pt-4">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={prevTeamMember}
+                        className="text-gold-400 hover:bg-gold-400/10"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </Button>
+                      <div className="flex space-x-2">
+                        {teamMembers.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentTeamMember(index)}
+                            className={`w-2 h-2 transition-all ${
+                              index === currentTeamMember ? "bg-gold-400 w-6" : "bg-gray-600"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={nextTeamMember}
+                        className="text-gold-400 hover:bg-gold-400/10"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Manufacturing & Quality - Compact */}
+      <section className="relative py-16 glass-effect">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <Image
-                src="/placeholder.svg?height=500&width=600"
-                alt="Manufacturing Process"
-                width={600}
-                height={500}
-                className="rounded-lg shadow-xl"
-              />
-            </div>
-            <div className="space-y-6 order-1 lg:order-2">
-              <h2 className="text-4xl font-bold text-gray-900">Manufacturing Excellence</h2>
-              <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  Our modern manufacturing facility in Kamonyi Ruyenze is equipped with state-of-the-art machinery and
-                  follows international quality standards to ensure consistent product quality.
-                </p>
-                <p>
-                  We implement rigorous quality control processes at every stage of production, from raw material
-                  sourcing to final packaging, ensuring that every product meets our high standards before reaching our
-                  customers.
-                </p>
+            <div className="space-y-6 fade-in-left">
+              <div>
+                <h2 className="section-title text-white mb-4">
+                  Manufacturing <span className="text-gold-400">Excellence</span>
+                </h2>
+                <div className="w-16 h-1 gold-gradient mb-6"></div>
               </div>
+
+              <p className="text-lg text-gray-300 leading-relaxed">
+                State-of-the-art facility with advanced technology ensuring consistent quality and international
+                standards compliance.
+              </p>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-blue-50 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-900">ISO</div>
-                  <div className="text-sm text-gray-600">Quality Standards</div>
+                <div className="glass-effect p-4 text-center border border-blue-400/20">
+                  <Shield className="h-6 w-6 text-blue-400 mx-auto mb-2" />
+                  <div className="text-xl font-black text-blue-400">ISO</div>
+                  <div className="text-xs text-gray-400">Certified</div>
                 </div>
-                <div className="text-center p-4 bg-green-50 rounded-lg">
-                  <div className="text-3xl font-bold text-green-900">100%</div>
-                  <div className="text-sm text-gray-600">Quality Tested</div>
+                <div className="glass-effect p-4 text-center border border-green-400/20">
+                  <CheckCircle className="h-6 w-6 text-green-400 mx-auto mb-2" />
+                  <div className="text-xl font-black text-green-400">99.8%</div>
+                  <div className="text-xs text-gray-400">Quality Rate</div>
                 </div>
               </div>
+            </div>
+
+            <div className="relative fade-in-right delay-200">
+              <Image
+                src="/placeholder.svg?height=400&width=500"
+                alt="Manufacturing"
+                width={500}
+                height={400}
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Team & Employment */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Team</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our success is built on the dedication and expertise of our team members, who are the heart of our
-              operations.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-10 w-10 text-blue-600" />
-              </div>
-              <div className="text-3xl font-bold text-blue-900 mb-2">40</div>
-              <div className="text-gray-600">Direct Employees</div>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-10 w-10 text-green-600" />
-              </div>
-              <div className="text-3xl font-bold text-green-900 mb-2">70+</div>
-              <div className="text-gray-600">Total Employment Created</div>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-yellow-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-10 w-10 text-yellow-600" />
-              </div>
-              <div className="text-3xl font-bold text-yellow-900 mb-2">5+</div>
-              <div className="text-gray-600">Years Experience</div>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="h-10 w-10 text-purple-600" />
-              </div>
-              <div className="text-3xl font-bold text-purple-900 mb-2">100%</div>
-              <div className="text-gray-600">Local Workforce</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sustainability */}
-      <section className="py-20">
+      {/* Sustainability - Compact */}
+      <section className="relative py-16 bg-gradient-to-br from-forest-900/20 to-forest-800/10">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-4xl font-bold text-gray-900">Environmental Responsibility</h2>
-              <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  We are committed to sustainable manufacturing practices that minimize our environmental impact while
-                  maintaining the highest product quality standards.
-                </p>
-                <p>
-                  Our formulations prioritize biodegradable ingredients, and we continuously work to reduce waste,
-                  conserve water, and optimize energy usage in our manufacturing processes.
-                </p>
-                <p>
-                  We believe that environmental responsibility and business success go hand in hand, and we're proud to
-                  contribute to a cleaner, healthier Rwanda.
-                </p>
+            <div className="relative order-2 lg:order-1 fade-in-left delay-200">
+              <Image
+                src="/placeholder.svg?height=400&width=500"
+                alt="Sustainability"
+                width={500}
+                height={400}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+
+            <div className="space-y-6 order-1 lg:order-2 fade-in-right">
+              <div>
+                <h2 className="section-title text-white mb-4">
+                  Sustainable <span className="text-forest-400">Future</span>
+                </h2>
+                <div className="w-16 h-1 bg-gradient-to-r from-forest-400 to-gold-400 mb-6"></div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="bg-green-100 p-3 rounded-full">
-                  <Leaf className="h-6 w-6 text-green-600" />
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Environmental responsibility through green chemistry, waste reduction, and energy efficiency
+                innovations.
+              </p>
+
+              <div className="space-y-3">
+                <div className="glass-effect flex items-center gap-3 p-3 border border-forest-400/20">
+                  <Leaf className="h-5 w-5 text-forest-400" />
+                  <span className="text-gray-300 text-sm">45% Carbon Footprint Reduction</span>
                 </div>
-                <div>
-                  <div className="font-semibold text-gray-900">Eco-Friendly Formulations</div>
-                  <div className="text-gray-600">Biodegradable and environmentally safe</div>
+                <div className="glass-effect flex items-center gap-3 p-3 border border-blue-400/20">
+                  <Droplets className="h-5 w-5 text-blue-400" />
+                  <span className="text-gray-300 text-sm">Zero Liquid Discharge System</span>
+                </div>
+                <div className="glass-effect flex items-center gap-3 p-3 border border-gold-400/20">
+                  <Award className="h-5 w-5 text-gold-400" />
+                  <span className="text-gray-300 text-sm">100% Biodegradable Formulations</span>
                 </div>
               </div>
-            </div>
-            <div className="relative">
-              <Image
-                src="/placeholder.svg?height=500&width=600"
-                alt="Sustainable Manufacturing"
-                width={600}
-                height={500}
-                className="rounded-lg shadow-xl"
-              />
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">Join Our Journey</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Whether you're looking for career opportunities, partnership possibilities, or want to learn more about our
-            products, we'd love to hear from you.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
-              <Link href="/contact">Contact Us</Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-white text-white hover:bg-white hover:text-blue-900"
-            >
-              <Link href="/products">View Our Products</Link>
-            </Button>
+      <section className="relative py-20 luxury-gradient">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-40 h-40 bg-gold-500/10 blur-2xl"></div>
+          <div className="absolute bottom-20 right-20 w-32 h-32 bg-forest-500/10 blur-xl"></div>
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="max-w-3xl mx-auto space-y-8 fade-in-up">
+            <h2 className="section-title text-white">
+              Join Our <span className="text-gold-400">Success</span>
+            </h2>
+            <p className="text-xl text-gray-300 leading-relaxed">
+              Partner with Rwanda's manufacturing excellence leader for quality products and sustainable growth.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <QuoteModal>
+                <Button size="lg" className="modern-button text-navy-900 font-bold px-8 py-4">
+                  Request Partnership
+                </Button>
+              </QuoteModal>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-2 border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-navy-900 px-8 py-4 font-bold bg-transparent"
+              >
+                <Link href="/contact">Explore Opportunities</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

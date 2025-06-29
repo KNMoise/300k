@@ -1,9 +1,9 @@
-import { type NextRequest, NextResponse } from "next/server"
-import nodemailer from "nodemailer"
+import { type NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
   try {
-    const formData = await request.json()
+    const formData = await request.json();
 
     // Validate required fields
     const requiredFields = [
@@ -15,24 +15,27 @@ export async function POST(request: NextRequest) {
       "productCategory",
       "quantity",
       "urgency",
-    ]
+    ];
     for (const field of requiredFields) {
       if (!formData[field]) {
-        return NextResponse.json({ success: false, message: `${field} is required` }, { status: 400 })
+        return NextResponse.json(
+          { success: false, message: `${field} is required` },
+          { status: 400 }
+        );
       }
     }
 
     // Create transporter for Gmail
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD,
       },
-    })
+    });
 
     // Test the connection
-    await transporter.verify()
+    await transporter.verify();
 
     // Email to admin
     const adminEmailHtml = `
@@ -48,7 +51,7 @@ export async function POST(request: NextRequest) {
           <!-- Header -->
           <div style="background: linear-gradient(135deg, #1a2332 0%, #28693c 100%); color: white; padding: 30px; text-align: center;">
             <h1 style="margin: 0; font-size: 28px; font-weight: bold;">🎯 New Quote Request</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 16px;">Peto Group Ltd - Premium Manufacturing</p>
+            <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 16px;">Peto Group Ltd - Manufacturing</p>
           </div>
           
           <!-- Content -->
@@ -59,19 +62,27 @@ export async function POST(request: NextRequest) {
               <table style="width: 100%; border-collapse: collapse;">
                 <tr>
                   <td style="padding: 12px 0; font-weight: bold; color: #555; width: 30%;">Name:</td>
-                  <td style="padding: 12px 0; color: #333;">${formData.firstName} ${formData.lastName}</td>
+                  <td style="padding: 12px 0; color: #333;">${
+                    formData.firstName
+                  } ${formData.lastName}</td>
                 </tr>
                 <tr style="background-color: #f8f9fa;">
                   <td style="padding: 12px 0; font-weight: bold; color: #555;">Email:</td>
-                  <td style="padding: 12px 0; color: #333;">${formData.email}</td>
+                  <td style="padding: 12px 0; color: #333;">${
+                    formData.email
+                  }</td>
                 </tr>
                 <tr>
                   <td style="padding: 12px 0; font-weight: bold; color: #555;">Phone:</td>
-                  <td style="padding: 12px 0; color: #333;">${formData.phone}</td>
+                  <td style="padding: 12px 0; color: #333;">${
+                    formData.phone
+                  }</td>
                 </tr>
                 <tr style="background-color: #f8f9fa;">
                   <td style="padding: 12px 0; font-weight: bold; color: #555;">Company:</td>
-                  <td style="padding: 12px 0; color: #333;">${formData.company}</td>
+                  <td style="padding: 12px 0; color: #333;">${
+                    formData.company
+                  }</td>
                 </tr>
               </table>
             </div>
@@ -82,16 +93,28 @@ export async function POST(request: NextRequest) {
               <table style="width: 100%; border-collapse: collapse;">
                 <tr>
                   <td style="padding: 12px 0; font-weight: bold; color: #555; width: 30%;">Category:</td>
-                  <td style="padding: 12px 0; color: #333;">${formData.productCategory}</td>
+                  <td style="padding: 12px 0; color: #333;">${
+                    formData.productCategory
+                  }</td>
                 </tr>
                 <tr style="background-color: #f8f9fa;">
                   <td style="padding: 12px 0; font-weight: bold; color: #555;">Quantity:</td>
-                  <td style="padding: 12px 0; color: #333;">${formData.quantity}</td>
+                  <td style="padding: 12px 0; color: #333;">${
+                    formData.quantity
+                  }</td>
                 </tr>
                 <tr>
                   <td style="padding: 12px 0; font-weight: bold; color: #555;">Urgency:</td>
                   <td style="padding: 12px 0; color: #333;">
-                    <span style="background-color: ${formData.urgency === "emergency" ? "#ef4444" : formData.urgency === "urgent" ? "#f59e0b" : formData.urgency === "priority" ? "#3b82f6" : "#10b981"}; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">
+                    <span style="background-color: ${
+                      formData.urgency === "emergency"
+                        ? "#ef4444"
+                        : formData.urgency === "urgent"
+                        ? "#f59e0b"
+                        : formData.urgency === "priority"
+                        ? "#3b82f6"
+                        : "#10b981"
+                    }; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">
                       ${formData.urgency.toUpperCase()}
                     </span>
                   </td>
@@ -128,7 +151,7 @@ export async function POST(request: NextRequest) {
         </div>
       </body>
       </html>
-    `
+    `;
 
     // Email to customer
     const customerEmailHtml = `
@@ -152,7 +175,7 @@ export async function POST(request: NextRequest) {
             <p style="font-size: 18px; color: #1a2332; margin-bottom: 20px;">Dear ${formData.firstName} ${formData.lastName},</p>
             
             <p style="color: #555; line-height: 1.6; margin-bottom: 25px;">
-              Thank you for your quote request! We have received your inquiry and our expert team is already working on preparing a detailed, personalized quote for your requirements.
+              Thank you for your quote request! We have received your inquiry and our team is already working on preparing a detailed, personalized quote for your requirements.
             </p>
             
             <!-- Request Summary -->
@@ -176,7 +199,7 @@ export async function POST(request: NextRequest) {
             
             <!-- What's Next -->
             <div style="margin: 30px 0;">
-              <h3 style="color: #1a2332; margin-bottom: 15px; font-size: 18px;">🚀 What happens next?</h3>
+              <h3 style="color: #1a2332; margin-bottom: 15px; font-size: 18px;">What happens next?</h3>
               <div style="margin-left: 20px;">
                 <div style="margin-bottom: 12px; display: flex; align-items: flex-start;">
                   <span style="color: #D4AF37; font-weight: bold; margin-right: 10px;">1.</span>
@@ -199,16 +222,16 @@ export async function POST(request: NextRequest) {
             
             <!-- Contact Info -->
             <div style="background: linear-gradient(135deg, #e8f4f8 0%, #f0f9ff 100%); padding: 25px; margin: 25px 0; border-left: 4px solid #28693c; border-radius: 4px;">
-              <h4 style="margin: 0 0 15px 0; color: #1a2332; font-size: 16px;">📞 Need immediate assistance?</h4>
+              <h4 style="margin: 0 0 15px 0; color: #1a2332; font-size: 16px;"> Need immediate assistance?</h4>
               <p style="margin: 0; color: #555; line-height: 1.6;">
-                <strong>Call us directly:</strong> +250 XXX XXX XXX<br>
+                <strong>Call us directly:</strong> ++250 788 431 288<br>
                 <strong>Email us:</strong> sales@petogroup.rw<br>
                 <strong>Business Hours:</strong> Monday - Friday, 8:00 AM - 6:00 PM
               </p>
             </div>
             
             <p style="color: #555; line-height: 1.6; margin-bottom: 25px;">
-              We appreciate your interest in our premium products and look forward to serving you with excellence.
+              We appreciate your interest in our products and look forward to serving you with excellence.
             </p>
             
             <p style="color: #1a2332; font-weight: bold; margin-bottom: 5px;">
@@ -216,7 +239,7 @@ export async function POST(request: NextRequest) {
               The Peto Group Sales Team
             </p>
             <p style="color: #D4AF37; font-weight: bold; margin: 0;">
-              Premium Manufacturing Excellence
+              Manufacturing Excellence
             </p>
           </div>
           
@@ -224,15 +247,15 @@ export async function POST(request: NextRequest) {
           <div style="background: #1a2332; color: white; padding: 25px; text-align: center;">
             <p style="margin: 0 0 10px 0; font-size: 16px; font-weight: bold;">Peto Group Ltd</p>
             <p style="margin: 0; font-size: 14px; opacity: 0.8;">
-              Premium Personal Care & Cleaning Products<br>
+              Personal Care & Cleaning Products<br>
               Kamonyi Ruyenze, Kigali, Rwanda<br>
-              📧 info@petogroup.rw | 📞 +250 XXX XXX XXX
+              📧 info@petogroup.rw | +250 781 727 544
             </p>
           </div>
         </div>
       </body>
       </html>
-    `
+    `;
 
     // Send email to admin
     await transporter.sendMail({
@@ -240,7 +263,7 @@ export async function POST(request: NextRequest) {
       to: process.env.GMAIL_USER,
       subject: `🎯 New Quote Request from ${formData.firstName} ${formData.lastName} - ${formData.company}`,
       html: adminEmailHtml,
-    })
+    });
 
     // Send confirmation email to customer
     await transporter.sendMail({
@@ -248,20 +271,20 @@ export async function POST(request: NextRequest) {
       to: formData.email,
       subject: "✅ Quote Request Confirmation - Peto Group Ltd",
       html: customerEmailHtml,
-    })
+    });
 
     return NextResponse.json({
       success: true,
       message: "Quote request sent successfully",
-    })
+    });
   } catch (error) {
-    console.error("Error sending quote request:", error)
+    console.error("Error sending quote request:", error);
     return NextResponse.json(
       {
         success: false,
         message: "Failed to send quote request. Please try again.",
       },
-      { status: 500 },
-    )
+      { status: 500 }
+    );
   }
 }
