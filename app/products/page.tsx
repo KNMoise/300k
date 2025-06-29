@@ -20,6 +20,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { QuoteModal } from "@/components/quote-modal"
 
 export default function ProductsPage() {
   // Header carousel images
@@ -512,9 +513,11 @@ export default function ProductsPage() {
                           </Accordion>
 
                           <div className="flex gap-3 pt-4">
-                            <Button size="sm" className="flex-1 luxury-button text-navy-900 font-semibold">
-                              Request Premium Quote
-                            </Button>
+                            <QuoteModal productName={product.name} productCategory={category.id}>
+                              <Button size="sm" className="flex-1 luxury-button text-navy-900 font-semibold">
+                                Request Premium Quote
+                              </Button>
+                            </QuoteModal>
                             <Button
                               size="sm"
                               variant="outline"
@@ -550,9 +553,11 @@ export default function ProductsPage() {
             unique requirements. Experience luxury tailored to your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center fade-in-up stagger-3">
-            <Button asChild size="lg" className="luxury-button text-navy-900 font-semibold px-10 py-4 text-lg">
-              <Link href="/contact">Request Custom Solutions</Link>
-            </Button>
+            <QuoteModal productCategory="custom">
+              <Button size="lg" className="luxury-button text-navy-900 font-semibold px-10 py-4 text-lg">
+                Request Custom Solutions
+              </Button>
+            </QuoteModal>
             <Button
               asChild
               variant="outline"

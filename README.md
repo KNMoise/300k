@@ -241,15 +241,15 @@ This project is proprietary software owned by **Peto Group Ltd**. All rights res
 ## 📞 Support & Contact
 
 ### **Technical Support**
-- **Developer**: [Your Name]
-- **Email**: developer@petogroup.rw
-- **GitHub**: [Your GitHub Profile]
+- **Developer**: [MoiseNIZEYIMANA]
+- **Email**: n.moise.ob@gmail.com
+- **GitHub**: Knmoise
 
 ### **Business Inquiries**
 - **Company**: Peto Group Ltd
 - **Location**: Kamonyi Ruyenze, Kigali, Rwanda
-- **Email**: info@petogroup.rw
-- **Phone**: +250 XXX XXX XXX
+- **Email**: n.moise.ob@gmail.com
+- **Phone**: +250 788 238 943
 
 ## 🏆 Acknowledgments
 

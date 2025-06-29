@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { QuoteModal } from "@/components/quote-modal"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -95,12 +96,11 @@ export default function Navigation() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
 
-            <Button
-              asChild
-              className="modern-button text-black font-semibold shadow-lg hover:shadow-xl transition-all duration-300 focus-visible"
-            >
-              <Link href="#quote">Get Quote</Link>
-            </Button>
+            <QuoteModal>
+              <Button className="modern-button text-black font-semibold shadow-lg hover:shadow-xl transition-all duration-300 focus-visible">
+                Get Quote
+              </Button>
+            </QuoteModal>
           </div>
 
           {/* Mobile menu button */}
@@ -145,11 +145,14 @@ export default function Navigation() {
               >
                 Contact
               </Link>
-              <Button asChild className="modern-button text-black font-semibold w-fit mx-4 focus-visible">
-                <Link href="#quote" onClick={() => setIsOpen(false)}>
+              <QuoteModal>
+                <Button
+                  className="modern-button text-black font-semibold w-fit mx-4 focus-visible"
+                  onClick={() => setIsOpen(false)}
+                >
                   Get Quote
-                </Link>
-              </Button>
+                </Button>
+              </QuoteModal>
             </div>
           </div>
         )}

@@ -98,8 +98,6 @@ export default function Footer() {
                   { label: "About Us", href: "/about" },
                   { label: "Our Products", href: "/products" },
                   { label: "Sustainability", href: "/sustainability" },
-                  { label: "Careers", href: "/careers" },
-                  { label: "News & Updates", href: "/news" }
                 ].map((link, index) => (
                   <Link
                     key={index}
@@ -166,14 +164,13 @@ export default function Footer() {
                   <div className="glass-effect p-3 rounded-xl group-hover:bg-white/20 transition-colors duration-300">
                     <Phone className="h-5 w-5 text-yellow-400" />
                   </div>
-                  <div className="text-slate-300">+250 XXX XXX XXX</div>
-                </div>
-                
+                  <div className="text-slate-300">+250 788 431 288</div>
+                </div>                
                 <div className="group flex items-center gap-4">
                   <div className="glass-effect p-3 rounded-xl group-hover:bg-white/20 transition-colors duration-300">
                     <Mail className="h-5 w-5 text-yellow-400" />
                   </div>
-                  <div className="text-slate-300">luxury@petogroup.rw</div>
+                  <div className="text-slate-300">info@petogroup.rw</div>
                 </div>
               </div>
 
