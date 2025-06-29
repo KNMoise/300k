@@ -11,72 +11,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center luxury-gradient overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-gold-400/10 product-float"></div>
-          <div
-            className="absolute top-40 right-20 w-24 h-24 bg-forest-600/10 product-float"
-            style={{ animationDelay: "1s" }}
-          ></div>
-          <div
-            className="absolute bottom-32 left-1/4 w-40 h-40 bg-gold-400/5 product-float"
-            style={{ animationDelay: "2s" }}
-          ></div>
-        </div>
-
-        <div className="relative container mx-auto px-4 py-20 z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
-            <div className="space-y-8">
-              <div className="space-y-6">
-                {/* <div className="fade-in-up">
-                  <span className="inline-block text-gold-400 font-semibold text-lg tracking-wide bg-white/10 px-4 py-2 backdrop-blur-sm">
-                    PROUDLY MADE IN RWANDA
-                  </span>
-                </div> */}
-                <h1 className="hero-text text-white fade-in-up delay-200">
-                  <span className="block text-gold-400">Manufacturing</span>
-                  <span className="block">Excellence</span>
-                </h1>
-                <p className="text-xl text-gray-300 leading-relaxed fade-in-up delay-300 max-w-2xl">
-                  Peto Group Ltd delivers world-class personal care and cleaning solutions, empowering 70+ skilled
-                  professionals while serving discerning customers across East Africa with uncompromising quality.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-6 fade-in-up delay-400">
-                <Button asChild size="lg" className="modern-button text-black font-semibold px-8 py-4 text-lg">
-                  <Link href="#products">
-                    Explore Products <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-black px-8 py-4 text-lg font-semibold bg-transparent"
-                >
-                  <Link href="#quote">Get Quote</Link>
-                </Button>
-              </div>
-            </div>
-            <div className="relative fade-in-right delay-300">
-              <div className="relative z-10">
-                <Image
-                  src="/sample.jpg"
-                  alt="Peto Group Manufacturing Excellence"
-                  width={600}
-                  height={700}
-                  className="w-full h-auto shadow-2xl"
-                />
-                <div className="absolute -bottom-8 -left-8 gold-gradient text-black p-8 shadow-2xl">
-                  <div className="text-4xl font-bold">40+</div>
-                  <div className="text-sm font-medium">Team Team Members</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Stats Section */}
       <section className="py-20 bg-white">
