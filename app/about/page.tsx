@@ -499,7 +499,7 @@ export default function AboutPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="glass-effect p-4 text-center border border-blue-400/20">
                   <Shield className="h-6 w-6 text-blue-400 mx-auto mb-2" />
-                  <div className="text-xl font-black text-blue-400">ISO</div>
+                  <div className="text-xl font-black text-blue-400">RSB</div>
                   <div className="text-xs text-gray-400">Certified</div>
                 </div>
                 <div className="glass-effect p-4 text-center border border-green-400/20">
@@ -529,7 +529,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative order-2 lg:order-1 fade-in-left delay-200">
               <Image
-                src="/placeholder.svg?height=400&width=500"
+                src="/environment.png?height=400&width=500"
                 alt="Sustainability"
                 width={500}
                 height={400}

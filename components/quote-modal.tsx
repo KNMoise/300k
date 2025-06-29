@@ -147,7 +147,7 @@ export function QuoteModal({ children, productName, productCategory }: QuoteModa
         <DialogHeader>
           <DialogTitle className="flex items-center gap-3 text-2xl font-bold text-navy-900">
             <Calculator className="h-6 w-6 text-gold-500" />
-            Request Premium Quote
+            What Can We Build Together?
           </DialogTitle>
           <DialogDescription className="text-gray-600">
             Get a personalized quote for your requirements. We'll respond within 24 hours.
@@ -253,6 +253,7 @@ export function QuoteModal({ children, productName, productCategory }: QuoteModa
                     <SelectItem value="personal-care">Personal Care</SelectItem>
                     <SelectItem value="industrial">Industrial Cleaning</SelectItem>
                     <SelectItem value="custom">Custom Formulation</SelectItem>
+                    <SelectItem value="other">Partnership</SelectItem>
                   </SelectContent>
                 </Select>
                 {errors.productCategory && <p className="text-red-500 text-xs mt-1">{errors.productCategory}</p>}
@@ -332,9 +333,9 @@ export function QuoteModal({ children, productName, productCategory }: QuoteModa
           </div>
 
           <div className="text-center text-sm text-gray-500 bg-gray-50 p-4 rounded-lg">
-            <p className="font-medium">📧 Quick Response Guarantee</p>
-            <p>We'll respond to your quote request within 24 hours during business days.</p>
-            <p className="mt-1">For urgent requests, please call us directly at +250 XXX XXX XXX</p>
+            <p className="font-medium">Quick Response Guarantee</p>
+            <p>We'll respond to your quote request within 24 hours which may exted due to high volume of requests during business days.</p>
+            <p className="mt-1">For urgent requests, please call us directly at +250 788 431 288</p>
           </div>
         </form>
       </DialogContent>
