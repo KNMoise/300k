@@ -3,23 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import {
-  ArrowLeft,
-  Award,
-  Target,
-  Heart,
-  Leaf,
-  Shield,
-  Factory,
-  ChevronLeft,
-  ChevronRight,
-  CheckCircle,
-  TrendingUp,
-  Zap,
-  Eye,
-  Droplets,
-  Star,
-} from "lucide-react"
+import {ArrowLeft,Award,Target,Heart,Leaf,Shield,Factory,ChevronLeft,ChevronRight,CheckCircle,TrendingUp,Zap,Eye,Droplets,Star,} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -45,7 +29,7 @@ const teamMembers: TeamMember[] = [
     name: "Dr. Marie Uwimana",
     position: "Chief Executive Officer",
     department: "Executive Leadership",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/team1.jpg?height=400&width=400",
     bio: "Visionary leader driving Rwanda's manufacturing excellence with 15+ years of transformative experience.",
     expertise: ["Strategic Leadership", "Business Growth", "International Markets", "Innovation"],
     experience: "15+ Years",
@@ -63,7 +47,7 @@ const teamMembers: TeamMember[] = [
     name: "James Mukamana",
     position: "Chief Technology Officer",
     department: "R&D Innovation",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/team2.jpg?height=400&width=400",
     bio: "Chemical engineering expert revolutionizing product formulation with sustainable innovation.",
     expertise: ["Product Innovation", "Quality Systems", "Chemical Engineering", "Sustainability"],
     experience: "12+ Years",
@@ -81,7 +65,7 @@ const teamMembers: TeamMember[] = [
     name: "Sarah Uwizeyimana",
     position: "Quality Assurance Director",
     department: "Quality Excellence",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/team1.jpg?height=400&width=400",
     bio: "Quality expert ensuring world-class standards through precision and continuous improvement.",
     expertise: ["Quality Management", "Testing Protocols", "Compliance", "Process Excellence"],
     experience: "10+ Years",
@@ -99,7 +83,7 @@ const teamMembers: TeamMember[] = [
     name: "David Nkurunziza",
     position: "Operations Director",
     department: "Manufacturing",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/team2.jpg?height=400&width=400",
     bio: "Manufacturing optimization expert delivering efficiency while maintaining safety excellence.",
     expertise: ["Production Excellence", "Lean Manufacturing", "Safety Systems", "Optimization"],
     experience: "14+ Years",
@@ -117,7 +101,7 @@ const teamMembers: TeamMember[] = [
     name: "Grace Mukasine",
     position: "Commercial Director",
     department: "Sales & Marketing",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/team1.jpg?height=400&width=400",
     bio: "Brand strategist expanding market presence across East Africa with data-driven excellence.",
     expertise: ["Brand Strategy", "Market Expansion", "Digital Innovation", "Customer Excellence"],
     experience: "8+ Years",
@@ -223,12 +207,12 @@ export default function AboutPage() {
               {/* Quick Stats */}
               <div className="grid grid-cols-2 gap-6 fade-in-up delay-200">
                 <div className="glass-effect p-6 border border-gold-400/20">
-                  <div className="text-3xl font-black text-gold-400 mb-2">70+</div>
+                  <div className="text-3xl font-black text-gold-400 mb-2">30+</div>
                   <div className="text-sm text-gray-300 font-medium">Expert Team</div>
                 </div>
                 <div className="glass-effect p-6 border border-forest-400/20">
                   <div className="text-3xl font-black text-forest-400 mb-2">15+</div>
-                  <div className="text-sm text-gray-300 font-medium">Premium Products</div>
+                  <div className="text-sm text-gray-300 font-medium">Products</div>
                 </div>
               </div>
             </div>
@@ -264,6 +248,40 @@ export default function AboutPage() {
               >
                 <div className="text-3xl font-black">ISO</div>
                 <div className="text-sm font-bold">Certified</div>
+              </div>
+            </div>
+          </div>
+          {/* Additional Journey Highlights */}
+          <div className="mt-20 fade-in-up delay-500">
+            <div className="glass-effect p-8 border border-gold-400/20 rounded-xl">
+              <div className="text-center space-y-4">
+                <h3 className="text-2xl font-bold text-white">
+                  From <span className="text-gold-400">Vision</span> to{" "}
+                  <span className="text-forest-400">Reality</span>
+                </h3>
+                <p className="text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                  Our transformation from a bold startup vision to Rwanda high market demand
+                  manufacturing leader represents more than growth  it epitomizes 
+                  our commitment to excellence, innovation, and the unwavering
+                  belief that Rwandan manufacturing can compete on the global
+                  stage.
+                </p>
+
+                <div className="flex justify-center items-center gap-8 mt-6 pt-6 border-t border-gold-400/20">
+                  <div className="text-center">
+                    <div className="text-sm text-gray-400">Started with</div>
+                    <div className="text-xl font-bold text-gold-400">
+                      3 People
+                    </div>
+                  </div>
+                  <div className="w-8 h-px bg-gradient-to-r from-gold-400 to-forest-400"></div>
+                  <div className="text-center">
+                    <div className="text-sm text-gray-400">Now employing</div>
+                    <div className="text-xl font-bold text-forest-400">
+                      30+ Professionals
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -326,7 +344,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section - Redesigned */}
+      {/* Team Section  */}
       <section className="relative py-20 bg-gradient-to-br from-navy-900/50 via-slate-900/50 to-navy-800/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 fade-in-up">
@@ -512,7 +530,7 @@ export default function AboutPage() {
 
             <div className="relative fade-in-right delay-200">
               <Image
-                src="/placeholder.svg?height=400&width=500"
+                src="/manufacturing.jpg?height=400&width=500"
                 alt="Manufacturing"
                 width={500}
                 height={400}

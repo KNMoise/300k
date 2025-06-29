@@ -146,7 +146,7 @@ export default function ContactPage() {
           {/* Header Content */}
           <div className="text-center max-w-4xl mx-auto fade-in-up delay-200">
             <h1 className="hero-text text-white mb-6">
-              Contact <span className="text-gold-400">Peto Group</span>
+               <span className="text-gold-400">PETO GROUP LTD</span>
             </h1>
             <div className="w-24 h-1 gold-gradient mx-auto mb-6"></div>
             <p className="text-xl text-gray-300 leading-relaxed">
@@ -356,9 +356,9 @@ export default function ContactPage() {
                       <div>
                         <h4 className="font-semibold text-white text-sm">Phone Numbers</h4>
                         <p className="text-gray-300 text-sm">
-                          Main: +250 XXX XXX XXX
+                          Main: +250 788 431 288
                           <br />
-                          Sales: +250 XXX XXX XXX
+                          Sales: +250 781 727 544
                         </p>
                       </div>
                     </div>
@@ -386,7 +386,7 @@ export default function ContactPage() {
                         <p className="text-gray-300 text-sm">
                           Mon-Fri: 8:00 AM - 6:00 PM
                           <br />
-                          Saturday: 8:00 AM - 2:00 PM
+                          Saturday: 8:00 AM - 6:00 PM
                         </p>
                       </div>
                     </div>
@@ -441,10 +441,10 @@ export default function ContactPage() {
                         <Users className="h-4 w-4 text-forest-400" />
                         <span className="text-gray-300 text-sm">70+ Team Members</span>
                       </div>
-                      <div className="flex items-center gap-3">
+                      {/* <div className="flex items-center gap-3">
                         <Award className="h-4 w-4 text-blue-400" />
                         <span className="text-gray-300 text-sm">5+ Years Excellence</span>
-                      </div>
+                      </div> */}
                     </div>
                   </CardContent>
                 </Card>
