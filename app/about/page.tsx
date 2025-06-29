@@ -146,20 +146,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen luxury-gradient overflow-x-hidden">
       {/* Navigation */}
-      <div className="fixed top-6 left-6 z-50">
-        <Button
-          asChild
-          variant="ghost"
-          size="sm"
-          className="glass-effect text-white hover:bg-white/20 border border-white/30"
-        >
-          <Link href="/">
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Home
-          </Link>
-        </Button>
-      </div>
-
+      
       {/* Company Story Section */}
       <section className="relative py-20 overflow-hidden">
         {/* Animated Background */}
