@@ -19,6 +19,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ProductShowcase } from "@/components/product-showcase"
 // import { QuoteSystem } from "@/components/quote-system"
 import { QuoteModal } from "@/components/quote-modal"
+import { DistributorModal } from "@/components/distributor-modal"
 
 export default function HomePage() {
   return (
@@ -378,9 +379,11 @@ export default function HomePage() {
                 >
                   Download Partnership Info
                 </Button>
-                <Button size="lg" className="bg-black text-gold-400 hover:bg-gray-800 px-8 py-3 font-semibold">
-                  Apply Now
-                </Button>
+                <DistributorModal>
+                  <Button size="lg" className="bg-black text-gold-400 hover:bg-gray-800 px-8 py-3 font-semibold">
+                    Apply Now
+                  </Button>
+                </DistributorModal>
               </div>
             </div>
           </div>
