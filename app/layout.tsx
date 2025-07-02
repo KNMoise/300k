@@ -10,16 +10,16 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title:
-    "Peto Group Ltd - Premium Personal Care & Cleaning Products | Made in Rwanda",
+    "Peto Group Ltd - Personal Care & Cleaning Products | Made in Rwanda",
   description:
-    "Leading manufacturer of premium personal care and cleaning products in Rwanda. ISO certified quality, sustainable practices, and exceptional service. Get your custom quote today.",
+    "Leading manufacturer of personal care and cleaning products in Rwanda. RSB certified quality, sustainable practices, and exceptional service. Get your custom quote today.",
   keywords:
     "Rwanda manufacturing, personal care products, cleaning products, kitchen soap, laundry detergent, industrial cleaning, premium quality, ISO certified, sustainable manufacturing, Peto Group",
   authors: [{ name: "Peto Group Ltd" }],
   openGraph: {
-    title: "Peto Group Ltd - Premium Manufacturing Excellence",
+    title: "Peto Group Ltd - Manufacturing",
     description:
-      "Premium personal care and cleaning products manufactured in Rwanda to international standards.",
+      "Personal care and cleaning products manufactured in Rwanda to international standards.",
     type: "website",
     locale: "en_US",
   },

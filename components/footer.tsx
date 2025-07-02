@@ -20,21 +20,21 @@ export default function Footer() {
                 <Shield className="h-8 w-8 text-slate-900" />
               </div>
               <h3 className="text-white font-semibold mb-2">Quality Certified</h3>
-              <p className="text-slate-400 text-sm">ISO Standards Compliant</p>
+              <p className="text-slate-400 text-sm">RSB Standards Compliant</p>
             </div>
             <div className="text-center group">
               <div className="inline-flex items-center justify-center w-16 h-16 gold-gradient rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Truck className="h-8 w-8 text-slate-900" />
               </div>
               <h3 className="text-white font-semibold mb-2">Fast Delivery</h3>
-              <p className="text-slate-400 text-sm">Nationwide Coverage</p>
+              <p className="text-slate-400 text-sm">Regional Coverage</p>
             </div>
             <div className="text-center group">
               <div className="inline-flex items-center justify-center w-16 h-16 gold-gradient rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 <Star className="h-8 w-8 text-slate-900" />
               </div>
-              <h3 className="text-white font-semibold mb-2">Premium Quality</h3>
-              <p className="text-slate-400 text-sm">Luxury Manufacturing</p>
+              <h3 className="text-white font-semibold mb-2">Quality</h3>
+              <p className="text-slate-400 text-sm">Manufacturing</p>
             </div>
             <div className="text-center group">
               <div className="inline-flex items-center justify-center w-16 h-16 gold-gradient rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -59,13 +59,13 @@ export default function Footer() {
                   <div>
                     <div className="text-2xl font-bold text-white">Peto Group Ltd</div>
                     <div className="text-sm font-medium bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-                      Luxury Made in Rwanda
+                      Made in Rwanda
                     </div>
                   </div>
                 </div>
                 
                 <p className="text-slate-300 leading-relaxed mb-8">
-                  Rwanda's premier manufacturer of luxury personal care and cleaning products. 
+                  Rwanda's manufacturer of personal care and cleaning products. 
                   We craft excellence through sustainable practices and innovative solutions.
                 </p>
 
@@ -117,13 +117,13 @@ export default function Footer() {
             <div className="fade-in-up delay-200">
               <h3 className="text-xl font-bold text-white mb-8 flex items-center">
                 <div className="w-1 h-6 gold-gradient rounded-full mr-3"></div>
-                Luxury Collections
+                Collections
               </h3>
               <nav className="space-y-4">
                 {[
                   { label: "Kitchen & Cleaning Excellence", href: "/products#kitchen-cleaning" },
-                  { label: "Premium Laundry Care", href: "/products#laundry" },
-                  { label: "Personal Hygiene Luxury", href: "/products#personal-hygiene" },
+                  { label: "Laundry Care", href: "/products#laundry" },
+                  { label: "Personal Hygiene", href: "/products#personal-hygiene" },
                   { label: "Exclusive Personal Care", href: "/products#personal-care" },
                   { label: "Industrial Solutions", href: "/products#industrial" }
                 ].map((category, index) => (
@@ -155,8 +155,8 @@ export default function Footer() {
                     <MapPin className="h-5 w-5 text-yellow-400" />
                   </div>
                   <div className="text-slate-300">
-                    <div className="font-semibold text-white">Kamonyi Ruyenze</div>
-                    <div>Kigali, Rwanda</div>
+                    <div className="font-semibold text-white">Kamonyi Ruyenzi</div>
+                    <div>South, Rwanda</div>
                   </div>
                 </div>
                 

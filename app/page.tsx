@@ -1,6 +1,19 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Award, Users, Globe, Leaf, Star } from "lucide-react"
+import {
+  ArrowRight,
+  Award,
+  Users,
+  Globe,
+  Leaf,
+  Star,
+  MapPin,
+  Phone,
+  Mail,
+  Store,
+  Building2,
+  ShoppingCart,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ProductShowcase } from "@/components/product-showcase"
@@ -43,6 +56,7 @@ export default function HomePage() {
                   professionals while serving discerning customers across East Africa with uncompromising quality.
                 </p>
               </div>
+
               <div className="flex flex-col sm:flex-row gap-6 fade-in-up delay-400">
                 <Button asChild size="lg" className="modern-button text-black font-semibold px-8 py-4 text-lg">
                   <Link href="#products">
@@ -59,6 +73,7 @@ export default function HomePage() {
                 </Button>
               </div>
             </div>
+
             <div className="relative fade-in-right delay-300">
               <div className="relative z-10">
                 <Image
@@ -182,7 +197,196 @@ export default function HomePage() {
         </div>
       </section>
 
-     
+      {/* Where to Find Our Products Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 fade-in-up">
+            <h2 className="section-title text-navy-900 mb-6">Where to Find Our Products</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our premium products are available through trusted distributors and retail partners across East Africa.
+              Find the nearest location or become a distributor today.
+            </p>
+          </div>
+
+          {/* Distribution Channels */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <Card className="modern-card bg-gradient-to-br from-blue-50 to-blue-100 border-0 shadow-lg fade-in-up delay-100">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-blue-500 mx-auto mb-4 flex items-center justify-center">
+                  <Store className="h-8 w-8 text-white" />
+                </div>
+                <CardTitle className="text-xl text-navy-900">Retail Stores</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <CardDescription className="text-gray-700 mb-4">
+                  Available in major supermarkets, pharmacies, and specialty stores across Rwanda, Uganda, and Kenya.
+                </CardDescription>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white bg-transparent"
+                >
+                  Find Stores
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="modern-card bg-gradient-to-br from-green-50 to-green-100 border-0 shadow-lg fade-in-up delay-200">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-green-500 mx-auto mb-4 flex items-center justify-center">
+                  <Building2 className="h-8 w-8 text-white" />
+                </div>
+                <CardTitle className="text-xl text-navy-900">Wholesale Partners</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <CardDescription className="text-gray-700 mb-4">
+                  Bulk orders and wholesale distribution through our certified partner network for businesses.
+                </CardDescription>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-green-500 text-green-600 hover:bg-green-500 hover:text-white bg-transparent"
+                >
+                  Partner With Us
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="modern-card bg-gradient-to-br from-purple-50 to-purple-100 border-0 shadow-lg fade-in-up delay-300">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 bg-purple-500 mx-auto mb-4 flex items-center justify-center">
+                  <ShoppingCart className="h-8 w-8 text-white" />
+                </div>
+                <CardTitle className="text-xl text-navy-900">Online Platforms</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <CardDescription className="text-gray-700 mb-4">
+                  Order directly through our e-commerce partners and authorized online retailers for convenience.
+                </CardDescription>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white bg-transparent"
+                >
+                  Shop Online
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Key Locations */}
+          <div className="bg-gray-50 p-8 lg:p-12">
+            <h3 className="text-2xl font-bold text-navy-900 text-center mb-12 fade-in-up">Key Distribution Centers</h3>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Rwanda */}
+              <div className="bg-white p-6 shadow-lg fade-in-up delay-100">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-red-100 flex items-center justify-center mr-4">
+                    <MapPin className="h-6 w-6 text-red-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-navy-900">Rwanda</h4>
+                    <p className="text-sm text-gray-600">Primary Manufacturing Hub</p>
+                  </div>
+                </div>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-center">
+                    <MapPin className="h-4 w-4 text-gray-400 mr-2" />
+                    <span className="text-gray-700">Kigali - Main Distribution Center</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Phone className="h-4 w-4 text-gray-400 mr-2" />
+                    <span className="text-gray-700">+250 788 123 456</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Mail className="h-4 w-4 text-gray-400 mr-2" />
+                    <span className="text-gray-700">rwanda@petogroup.com</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Uganda */}
+              <div className="bg-white p-6 shadow-lg fade-in-up delay-200">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-yellow-100 flex items-center justify-center mr-4">
+                    <MapPin className="h-6 w-6 text-yellow-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-navy-900">Uganda</h4>
+                    <p className="text-sm text-gray-600">Regional Distribution</p>
+                  </div>
+                </div>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-center">
+                    <MapPin className="h-4 w-4 text-gray-400 mr-2" />
+                    <span className="text-gray-700">Kampala - Regional Office</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Phone className="h-4 w-4 text-gray-400 mr-2" />
+                    <span className="text-gray-700">+256 700 123 456</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Mail className="h-4 w-4 text-gray-400 mr-2" />
+                    <span className="text-gray-700">uganda@petogroup.com</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Kenya */}
+              <div className="bg-white p-6 shadow-lg fade-in-up delay-300">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-green-100 flex items-center justify-center mr-4">
+                    <MapPin className="h-6 w-6 text-green-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-navy-900">Kenya</h4>
+                    <p className="text-sm text-gray-600">Expanding Market</p>
+                  </div>
+                </div>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-center">
+                    <MapPin className="h-4 w-4 text-gray-400 mr-2" />
+                    <span className="text-gray-700">Nairobi - Partner Network</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Phone className="h-4 w-4 text-gray-400 mr-2" />
+                    <span className="text-gray-700">+254 700 123 456</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Mail className="h-4 w-4 text-gray-400 mr-2" />
+                    <span className="text-gray-700">kenya@petogroup.com</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Become a Distributor CTA */}
+          <div className="mt-16 text-center fade-in-up delay-400">
+            <div className="bg-gradient-to-r from-gold-400 to-gold-600 p-8 lg:p-12 text-black">
+              <h3 className="text-3xl font-bold mb-4">Become a Distributor</h3>
+              <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+                Join our growing network of successful distributors and bring premium quality products to your market.
+                Competitive margins, marketing support, and exclusive territories available.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-black text-black hover:bg-black hover:text-gold-400 px-8 py-3 font-semibold bg-transparent"
+                >
+                  Download Partnership Info
+                </Button>
+                <Button size="lg" className="bg-black text-gold-400 hover:bg-gray-800 px-8 py-3 font-semibold">
+                  Apply Now
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -269,6 +473,7 @@ export default function HomePage() {
               Join our network of satisfied customers and experience the difference that premium quality makes. Contact
               us today for personalized solutions.
             </p>
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <QuoteModal>
                 <Button size="lg" className="modern-button text-black font-semibold px-10 py-4 text-lg">
