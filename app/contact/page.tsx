@@ -344,7 +344,7 @@ export default function ContactPage() {
                         <p className="text-gray-300 text-sm">
                           Kamonyi Ruyenze
                           <br />
-                          Kigali, Rwanda
+                          South, Rwanda
                         </p>
                       </div>
                     </div>
@@ -460,7 +460,7 @@ export default function ContactPage() {
           <div className="text-center mb-8 fade-in-up">
             <h2 className="section-title text-white mb-4">Visit Our Facility</h2>
             <p className="text-lg text-gray-300">
-              Located in Kamonyi Ruyenze, Kigali - easily accessible for meetings and facility tours.
+              Located in Kamonyi Ruyenze, South - easily accessible for meetings and facility tours.
             </p>
           </div>
 
@@ -469,7 +469,7 @@ export default function ContactPage() {
               <div className="text-center">
                 <MapPin className="h-12 w-12 text-gold-400 mx-auto mb-4" />
                 <p className="text-gray-300">Interactive map integration available</p>
-                <p className="text-sm text-gray-400">Kamonyi Ruyenze, Kigali, Rwanda</p>
+                <p className="text-sm text-gray-400">Kamonyi Ruyenze, South, Rwanda</p>
               </div>
             </div>
           </div>

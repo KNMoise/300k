@@ -280,7 +280,7 @@ export function ProductShowcase() {
               </div>
 
               {/* Certifications */}
-              <div>
+              {/* <div>
                 <h4 className="text-lg font-semibold text-navy-900 mb-3">Certifications</h4>
                 <div className="flex flex-wrap gap-3">
                   {currentProduct.certifications.map((cert, index) => (
@@ -290,19 +290,13 @@ export function ProductShowcase() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <QuoteModal productName={currentProduct.name} productCategory={currentProduct.category}>
                   <Button className="modern-button text-black font-semibold px-8 py-3">Request Quote</Button>
                 </QuoteModal>
-                <Button
-                  variant="outline"
-                  className="border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white px-8 py-3 bg-transparent"
-                >
-                  View Details
-                </Button>
               </div>
             </div>
           </div>
